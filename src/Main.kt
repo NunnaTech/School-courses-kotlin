@@ -23,10 +23,10 @@ fun createCourseProgramming(name: String, description: String) {
 }
 
 fun selectCourseProgramming(query: String) {
-    val courseSearched: ProgramingCourse? = listProgramingCourse.find{it.name == query}
-    if(courseSearched != null){
+    val courseSearched: ProgramingCourse? = listProgramingCourse.find { it.name == query }
+    if (courseSearched != null) {
         println("ÉXITO: Curso encontrado ${courseSearched.name} - ${courseSearched.description}")
-    }else{
+    } else {
         ProgramingCourse.message("ERROR: El curso no fue encontrado")
     }
 }
