@@ -1,10 +1,5 @@
 fun main(args: Array<String>) {
-    createCourseProgramming("Java", "Desde 0")
-    createCourseProgramming("Java", "Desde 0")
-    createCourseProgramming("C", "Desde 0")
-    createCourseProgramming("C", "Desde 0")
 
-    selectCourseProgramming("Java")
 }
 
 fun createCourseProgramming(name: String, description: String) {
