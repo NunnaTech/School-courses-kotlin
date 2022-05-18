@@ -6,6 +6,7 @@ class ProgramingCourse(
     description: String
 ) : Course(id, name, description) {
 
+
     companion object {
         private val id = AtomicInteger()
         fun newEntry(name: String, description: String) = ProgramingCourse(id.getAndIncrement(), name, description)
@@ -21,3 +22,4 @@ class ProgramingCourse(
 }
 
 val listProgramingCourse: MutableList<ProgramingCourse> = mutableListOf<ProgramingCourse>();
+
