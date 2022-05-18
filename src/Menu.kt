@@ -63,12 +63,14 @@ open class Menu {
                 crud.createCourseProgramming(name, description);
             }
             2 -> {
-                var id = valid.getPositiveInt("Ingrese el id del curso a actualizar: ")
-
-
+                var id: Int? = valid.getPositiveInt("Ingrese el id del curso a actualizar: ")
+                var name: String = valid.getCourseName("Ingrese el nuevo nombre del curso: ")
+                var description: String = valid.getCourseName("Ingrese la nueva descripción del curso: ")
+                crud.updateProgrammingCourse(id, name, description);
             }
             3 -> {
                 var id = valid.getPositiveInt("Ingrese el id del curso a eliminar: ")
+                crud.deleteProgrammingCourse(id);
             }
             4 -> {
                 var name: String = valid.getCourseName("Ingrese el nombre del curso: ")
@@ -88,7 +90,7 @@ open class Menu {
                 1 -> cookingMenu()
                 2 -> programingMenu()
                 3 -> {
-                    crud.selectAll()
+                    crud.selectAllProgrammingCourses()
                 }
                 4 -> {
                     printSeparator()

@@ -26,8 +26,31 @@ class Crud {
     }
 
 
-    fun selectAll(){
+    fun selectAllProgrammingCourses(){
         for(e in listProgramingCourse) println(e)
+    }
+
+    fun updateProgrammingCourse (id:Int?,name:String, description: String){
+
+        var index = listProgramingCourse.indexOf(listProgramingCourse.find{ it.id == id })
+
+        if ( index != -1){
+            listProgramingCourse[index].name = name
+            listProgramingCourse[index].description
+            println("INFO: Actualizado correctamente!")
+        }else{
+            println("ERROR: Curso no encontrado!")
+        }
+    }
+
+    fun deleteProgrammingCourse(id:Int?){
+        var programingCoursePresent:ProgramingCourse? = listProgramingCourse.find{ it.id == id }
+        if (programingCoursePresent != null){
+            listProgramingCourse.removeIf { course -> course.id == id }
+            println("INFO: Eliminado correctamente")
+        }else{
+            println("ERROR: No existe el curso buscado.")
+        }
     }
 
 }
