@@ -1,4 +1,3 @@
-import java.util.concurrent.atomic.AtomicInteger
 
 open class Course(
     var id: Int,

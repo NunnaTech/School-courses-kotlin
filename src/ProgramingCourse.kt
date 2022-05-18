@@ -4,7 +4,4 @@ class ProgramingCourse(
     description: String
 ) : Course(id, name, description) {
 
-    companion object{
-
-    }
 }
