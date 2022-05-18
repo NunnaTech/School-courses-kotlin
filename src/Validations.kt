@@ -26,18 +26,48 @@ class Validations {
         }
     }
 
-    fun isCourseRegister(courseName: String, course: Course) : Boolean{
-        return if (courseName.equals(course.name)){
-            println("ERROR: El curso $courseName ya ha sido registrado.")
-            true;
-        }else{
-            println("¡El curso $courseName ha sido agregado satisfactoriamente!")
-            false
-        }
-
+    open fun isCorrect(): String {
+        var inputString : String = ""
+        var flag = true;
+        val validates = Regex("^[A-Za-z0-9_-]*$")
+        do {
+            try {
+                inputString = readLine().toString();
+                if (inputString != null) {
+                    if (inputString.matches(validates)) {
+                        inputString = inputString.toUpperCase()
+                        flag = false;
+                        return inputString;
+                    } else {
+                        return "ERROR: Solo se permiten letras, números y guiones en el nombre."
+                    }
+                }
+            } catch (e: Exception) {
+                return isCorrect()
+            }
+        } while (flag)
+        return isCorrect()
     }
-
-
+    open fun isCorrect(message:String): String {
+        val validates = Regex("^[A-Za-z0-9 _-]*$")
+            try {
+                print(message)
+                var inputString = readLine().toString();
+                if (inputString != null) {
+                    if (inputString.matches(validates)) {
+                        inputString = inputString.toUpperCase()
+                        return inputString;
+                    } else {
+                        println("ERROR: Solo se permiten letras, números y guiones en el nombre.")
+                        return isCorrect(message)
+                    }
+                }
+            } catch (e: Exception) {
+                println("ERROR: Solo se permiten letras, números y guiones en el nombre.")
+                return isCorrect()
+            }
+        return isCorrect()
+    }
 
 
 }
