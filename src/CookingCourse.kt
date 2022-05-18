@@ -1,3 +1,5 @@
+import java.util.concurrent.atomic.AtomicInteger
+
 class CookingCourse(
     id: Int,
     name: String,
@@ -6,7 +8,12 @@ class CookingCourse(
     id, name, description
 ) {
 
-    companion object{
+    companion object {
+        private val id = AtomicInteger()
+        fun newEntry(name: String, description: String) = CookingCourse(id.getAndIncrement(), name, description)
+    }
 
+    override fun toString(): String {
+        return ("$id $name $description")
     }
 }
