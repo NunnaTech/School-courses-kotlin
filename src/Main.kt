@@ -1,5 +1,5 @@
 fun main(args: Array<String>) {
-
+    Menu().start();
 }
 
 fun createCourseProgramming(name: String, description: String) {
@@ -25,4 +25,5 @@ fun selectCourseProgramming(query: String) {
         ProgramingCourse.message("ERROR: El curso no fue encontrado")
     }
 }
+
 
