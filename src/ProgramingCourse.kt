@@ -9,6 +9,10 @@ class ProgramingCourse(
     companion object {
         private val id = AtomicInteger()
         fun newEntry(name: String, description: String) = ProgramingCourse(id.getAndIncrement(), name, description)
+
+        fun message(sms:String):Unit{
+            println(sms)
+        }
     }
 
     override fun toString(): String {
