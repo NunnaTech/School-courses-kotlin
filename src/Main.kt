@@ -27,11 +27,10 @@ fun selectCourseProgramming(query: String) {
     }
 }
 
-fun updateProgrammingCourse (name:String){
-    var _name = name.toUpperCase()
+fun updateProgrammingCourse (id:Int){
 
-    var oldProgramingCourse:ProgramingCourse? = listProgramingCourse.find{ it.name.toUpperCase() == _name }
-    println(oldProgramingCourse.toString())
+    var oldProgramingCourse:ProgramingCourse? = listProgramingCourse.find{ it.id == id }
+
     if ( oldProgramingCourse != null){
         println("Ingresa el nuevo nombre: ")
         var newName:String?  = readLine()
@@ -39,20 +38,36 @@ fun updateProgrammingCourse (name:String){
         var newDescription:String? = readLine()
 
         for (item in listProgramingCourse){
-            if(item.name.toUpperCase().equals(_name)){
+            if(item.name.toUpperCase().equals(newName)){
+                println("ERROR: ya existe un curso con ese nombre!.")
+                break
+            }else{
                 if (newName != null && newDescription != null) {
                     item.name = newName
                     item.description = newDescription
                 };
+                println("INFO: Actualizado correctamente.")
+                break
             }
         }
-        println("Actualizado correctamente.")
     }else{
-        println("Curso no encontrado!")
+        println("ERROR: Curso no encontrado!")
     }
 }
 
-fun deleteProgrammingCourse(){
+fun deleteProgrammingCourse(id:Int){
+
+    // 1 2 3
+    //2
+
+    var programingCoursePresent:ProgramingCourse? = listProgramingCourse.find{ it.id == id }
+    if (programingCoursePresent != null){
+        listProgramingCourse.removeIf { course -> course.id == id }
+        println("INFO: Eliminado correctamente")
+    }else{
+        println("ERROR: No existe el curso buscado.")
+    }
+
 
 }
 
