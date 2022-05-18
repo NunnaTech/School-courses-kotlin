@@ -1,12 +1,21 @@
+import java.util.concurrent.atomic.AtomicInteger
+
 class CookingCourse(
-    id: Int,
-    name: String,
-    description: String
+        id: Int,
+        name: String,
+        description: String
 ) : Course(
-    id, name, description
+        id, name, description
 ) {
 
-    companion object{
+    companion object {
+        private val id = AtomicInteger()
+        open fun newEntry(name: String, description: String) = Course(id.getAndIncrement(), name, description)
 
+        fun message(message:String):Unit{
+           println("${message}")
+        }
     }
 }
+
+val listaCookingCourse = mutableListOf<Course>()
