@@ -4,7 +4,7 @@ fun main(args: Array<String>) {
     createCourseProgramming("C", "Desde 0")
     createCourseProgramming("C", "Desde 0")
 
-    selectCourseProgramming("fdgfdg")
+    selectCourseProgramming("Java")
 }
 
 fun createCourseProgramming(name: String, description: String) {
@@ -18,7 +18,7 @@ fun createCourseProgramming(name: String, description: String) {
     if (flag) ProgramingCourse.message("ERROR: El curso ya existe")
     else {
         listProgramingCourse.add(ProgramingCourse.newEntry(name, description))
-        ProgramingCourse.message("ÉXITO: El curso fue añadido")
+        ProgramingCourse.message("INFO: El curso fue añadido")
     }
 }
 
