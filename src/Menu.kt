@@ -1,11 +1,13 @@
-import java.util.*
-
 open class Menu {
 
-    open fun printSeparator(){
+    val valid = Validations();
+    val crud = Crud();
+
+    open fun printSeparator() {
         println("----------------------------")
     }
-     fun printMenu(){
+
+    fun printMenu() {
         printSeparator()
         println("Menú principal")
         printSeparator()
@@ -14,49 +16,79 @@ open class Menu {
         println("3.- Mostrar Todos los cursos")
         println("4.- Salir")
     }
-     fun printSubMenu(category: String){
+
+    fun printSubMenu(category: String) {
         printSeparator()
         println("Sub Menú $category")
         printSeparator()
         println("1.- Añadir")
-        println("2.- actualizar")
-        println("3.- buscar")
-        println("4.- Regresar")
+        println("2.- Actualizar")
+        println("3.- Eliminar")
+        println("4.- Buscar")
+        println("5.- Regresar")
     }
-    fun cookingMenu(){
+
+    fun cookingMenu() {
         printSubMenu("Cooking")
-        var subAswer : Int? = Validations().getPositiveInt("Selecciona una opción (1-4):")
-        when (subAswer){
-            1 -> println("1")
-            2 -> println("2")
-            3 -> println("3")
-            4 -> return
-            else -> println("opción no disponible")
-        }
-        return cookingMenu()
-    }
-    fun programingMenu(){
-        printSubMenu("Programming")
-        var subAswer : Int? = Validations().getPositiveInt("Selecciona una opción (1-4):")
-        when (subAswer){
-            1 -> println("1")
-            2 -> println("2")
-            3 -> println("3")
-            4 -> return
+        var subAswer: Int? = Validations().getPositiveInt("Selecciona una opción (1-4):")
+        when (subAswer) {
+            1 -> {
+                var name: String = valid.getCourseName("Ingrese el nombre del curso: ")
+                var description: String = valid.getCourseName("Ingrese la descripción del curso: ")
+            }
+            2 -> {
+                var id = valid.getPositiveInt("Ingrese el id del curso a actualizar: ")
+
+
+            }
+            3 -> {
+                var id = valid.getPositiveInt("Ingrese el id del curso a eliminar: ")
+            }
+            4 -> {
+                var name: String = valid.getCourseName("Ingrese el nombre del curso: ")
+            }
+            5 -> return
             else -> println("opción no disponible")
         }
         return cookingMenu()
     }
 
-    open fun start(){
-        while (true){
+    fun programingMenu() {
+        printSubMenu("Programming")
+        var subAswer: Int? = Validations().getPositiveInt("Selecciona una opción (1-4):")
+        when (subAswer) {
+            1 -> {
+                var name: String = valid.getCourseName("Ingrese el nombre del curso: ")
+                var description: String = valid.getCourseName("Ingrese la descripción del curso: ")
+                crud.createCourseProgramming(name, description);
+            }
+            2 -> {
+                var id = valid.getPositiveInt("Ingrese el id del curso a actualizar: ")
+
+
+            }
+            3 -> {
+                var id = valid.getPositiveInt("Ingrese el id del curso a eliminar: ")
+            }
+            4 -> {
+                var name: String = valid.getCourseName("Ingrese el nombre del curso: ")
+                crud.selectCourseProgramming(name)
+            }
+            5 -> return
+            else -> println("opción no disponible")
+        }
+        return programingMenu()
+    }
+
+    open fun start() {
+        while (true) {
             printMenu()
-            var mainAnswer : Int? = Validations().getPositiveInt("Selecciona una opción (1-4):")
+            var mainAnswer: Int? = Validations().getPositiveInt("Selecciona una opción (1-4):")
             when (mainAnswer) {
                 1 -> cookingMenu()
                 2 -> programingMenu()
                 3 -> {
-                    println("3")
+                    crud.selectAll()
                 }
                 4 -> {
                     printSeparator()
