@@ -1,3 +1,5 @@
+import java.util.*
+
 class Validations {
 
 
@@ -10,6 +12,7 @@ class Validations {
             println("¡El curso $courseName ha sido agregado satisfactoriamente!")
             false
         }
+
     }
 
 
